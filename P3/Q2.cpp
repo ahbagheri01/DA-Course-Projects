@@ -2,20 +2,10 @@
 #include <iostream>
 using namespace std;
 typedef vector<vector<int>> Adj_matrix;
-void print_adj(Adj_matrix& adj){
-    cout<<endl;
-    for(int i = 0 ; i < adj.size() ; i++){
-        for (auto v : adj[i]){
-            cout<<v<<" ";
-        }
-        cout<<endl;
-    }
-}
-int dfs(Adj_matrix& adj,int* visited,int s,int p,int t,int l){
+int dfs(Adj_matrix& adj,bool* visited,int s,int p,int t,int l){
     if (s == t){
         return l+1;
     }
-    print_adj(adj);
     visited[s] = true;
     int newL = 0;
     for (auto v : adj[s]){
@@ -27,11 +17,10 @@ int dfs(Adj_matrix& adj,int* visited,int s,int p,int t,int l){
     visited[s] = false;
     return newL;
 }
-int longest_path(Adj_matrix& adj,int* visited,int s,int t){
+int longest_path(Adj_matrix& adj,bool* visited,int s,int t){
     if (s == t){
         return 0;
     }
-    print_adj(adj);
     int l = 0;
     visited[s] = true;
     int newL = l;
@@ -42,7 +31,6 @@ int longest_path(Adj_matrix& adj,int* visited,int s,int t){
     return newL;
 }
 void print_table(int** res , int n){
-    cout<<endl;
     int i , j ;
     for( i = 0 ; i < n ; i++){
         for( j = 0 ; j < n-1 ; j++){
@@ -64,13 +52,11 @@ int main(){
         adj[v-1].push_back(u-1);
         adj[u-1].push_back(v-1);
     }
-    print_adj(adj);
 
-    int* visited = (int*) calloc(n,sizeof(bool));
+    bool* visited = (bool*) calloc(n,sizeof(bool));
     for(int i = 0 ; i < n ; i++){
         res[i][i] = 0;
         for(int j = i+1 ; j < n ; j++){
-            print_table(res,n);
             res[i][j] = res[j][i] = longest_path(adj,visited,i,j);
         }
     }
