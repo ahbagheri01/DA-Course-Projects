@@ -1,5 +1,5 @@
 # DA-Course-Projects
-## Project One:
+## Project One:\\
 Divide & Conquer
 ## Project Two:
 DP
