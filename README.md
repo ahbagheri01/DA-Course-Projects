@@ -1,12 +1,13 @@
 # DA-Course-Projects
-## Project One:\\
-Divide & Conquer
+## Project One:
+Divide & Conquer\
+Greedy\
 ## Project Two:
-DP
-Graph
-Max Flow
+DP\
+Graph\
+Max Flow\
 ## Project Three
-String matching
-Backtrack
-Simplex
+String matching\
+Backtrack\
+Simplex\
 
